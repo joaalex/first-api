@@ -1,21 +1,25 @@
-const serveData = require('node:http');
-const dataFile = require('./logs.js')
-const { getAge } = require('./logs.js');
+const http = require('node:http');
 
 const hostname = 'localhost';
-const port = 3000;
+const port = 1234;
 
-const server = serveData.createServer((req, res) => { 
-
+const server = http.createServer((req, res) => { 
   
+       
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify({
+        message: "Welcome to Node",
+        course: "Bsc. Computer Science",
+        level: "300"
+    }));
+    res.end();
+})
+
+server.listen('1234', 'localhost',() => {
+    console.log(`Server running at ${hostname} on port ${port}`);
 });
 
-server.listen(port, hostname,() => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
 
-dataFile.fullname()
-dataFile.getAge()
 console.log("how far")
 
 
