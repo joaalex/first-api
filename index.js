@@ -68,27 +68,51 @@ app.post('/user/add', (req, res) => {
 })
 app.put('/user/update', (req, res) => {  
    
-    const { id, name, phone, email, address } = req.body
-    if (!id || !name || !phone || !email || !address || email.indexOf('@') === -1)
-    { 
-        res.json({
-            status: "error",
-            message: "All fields are required"
-        })
-    }
-    const filteredData = data.filter(item => item.id === id)
-    // const filteredDataObj = filteredData[0]
-    filteredData[0].name = name
-    filteredData[0].phone = phone
-    filteredData[0].email = email
-    filteredData[0].address = address
+  const { id, name, phone, email, address } = req.body
+  if (!id || !name || !phone || !email || !address || email.indexOf('@') === -1)
+  { 
+      res.json({
+          status: "error",
+          message: "All fields are required"
+      })
+  }
+  const filteredData = data.filter(item => item.id === id)
+  // const filteredDataObj = filteredData[0]
+  filteredData[0].name = name
+  filteredData[0].phone = phone
+  filteredData[0].email = email
+  filteredData[0].address = address
 
-    res.json({
-        status: "success",
-        data : data
-    })
-})
+  res.json({
+      status: "success",
+      message: "User Updated ",
+      data : data
+  });
+});
+
 app.delete('/user/delete', (req, res) => {
+  const {id} = req.body
+  let updatedData;
+
+  if(!id ){
+    res.json({
+      status: "error",
+      message: "Id required"
+    })
+  };
+  data.forEach((item, i )=> {
+   if(item.id === id){
+          data.splice(i, 1);
+         return updatedData = data
+        }
+      })
+      res.json({
+        status: "success",
+        message: "User deleted",
+        data: updatedData
+      })
+
+  
     
 })
 
