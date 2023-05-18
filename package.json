@@ -11,11 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/ZULFAHGROUP/first-api.git"
   },
-  "author": {
-    "name": "rosh",
-    "nickname": "code-ninja",
-    "email": "roshbon@gmail.com>"
-  },
+  "author": "rosh <roshbon@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ZULFAHGROUP/first-api/issues"

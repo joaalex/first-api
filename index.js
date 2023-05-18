@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const PORT = 4000
+const PORT = 4400
 const data = [
     {
         id: 1,
@@ -91,6 +91,29 @@ app.put('/user/update', (req, res) => {
 });
 
 app.delete('/user/delete', (req, res) => {
+    const {id} = req.body
+  let updatedData;
+
+  if(!id ){
+    res.json({
+      status: "error",
+      message: "Id required"
+    })
+  };
+  data.forEach((item, i )=> {
+   if(item.id === id){
+          data.splice(i, 1);
+         return updatedData = data
+        }
+      })
+      res.json({
+        status: "success",
+        message: "User deleted",
+        data: updatedData
+      })
+
+  
+  
     
 })
 
